@@ -1,0 +1,156 @@
+/* Scoped landing aesthetic — imported from app/page.tsx only */
+
+/* One scroll container: stop the whole page from moving (fixes “navbar not fixed”). */
+html:has([data-landing-glass]),
+body:has([data-landing-glass]) {
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+[data-landing-glass] {
+  color-scheme: dark;
+}
+
+/*
+ * `text-white` on <main> makes `border` use currentColor (white) unless
+ * border-color is forced. This class locks edges to dark zinc.
+ */
+[data-landing-glass] .landing-edge {
+  border-color: rgb(36 36 40) !important;
+}
+
+/*
+ * Outer chrome — darker than zinc-700 so it doesn’t read “bright” on #000.
+ */
+.landing-shell {
+  border-radius: 1.5rem;
+  border: 1px solid rgb(36 36 40);
+  box-shadow:
+    0 0 80px -36px rgb(52 211 153 / 0.1),
+    0 0 0 1px rgb(0 0 0 / 0.5) inset;
+  background-clip: padding-box;
+}
+
+@media (min-width: 640px) {
+  .landing-shell {
+    border-radius: 1.75rem;
+  }
+}
+
+.landing-panel {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(36 36 40);
+  box-shadow: 0 0 48px -28px rgb(45 212 191 / 0.04);
+  background-clip: padding-box;
+}
+
+@media (min-width: 640px) {
+  .landing-panel {
+    border-radius: 1.5rem;
+  }
+}
+
+.landing-header {
+  border-bottom: 1px solid rgb(36 36 40);
+}
+
+/*
+ * Floating background canvas behind all cards.
+ * This is what creates the reference glassmorphism feel.
+ */
+.floating-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      1200px 700px at 70% 18%,
+      rgb(225 255 242 / 0.14),
+      transparent 54%
+    ),
+    radial-gradient(
+      900px 560px at 18% 82%,
+      rgb(52 211 153 / 0.12),
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgb(5 5 8 / 0.98), rgb(2 2 4 / 0.99));
+}
+
+.canvas-light {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.canvas-light-a {
+  top: -8%;
+  right: -12%;
+  width: 42rem;
+  height: 42rem;
+  background: rgb(230 255 242 / 0.2);
+}
+
+.canvas-light-b {
+  left: -18%;
+  bottom: -24%;
+  width: 34rem;
+  height: 34rem;
+  background: rgb(16 185 129 / 0.2);
+}
+
+.canvas-light-c {
+  top: 42%;
+  right: 28%;
+  width: 14rem;
+  height: 14rem;
+  background: rgb(244 244 245 / 0.1);
+  filter: blur(46px);
+}
+
+.canvas-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 32%, transparent 100%);
+}
+@keyframes landing-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes landing-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.landing-glow-pulse {
+  animation: landing-glow-pulse 3s ease-in-out infinite;
+}
+
+.landing-float {
+  animation: landing-float 5s ease-in-out infinite;
+}
+
+[data-landing-glass] #landing-scroll {
+  scroll-behavior: smooth;
+}
