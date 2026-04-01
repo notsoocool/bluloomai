@@ -8,7 +8,7 @@ All participants are expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.
 
 ## Ways to contribute
 
-- Report bugs or suggest features via **GitHub Issues** on this repository (use the templates when available).
+- Report bugs or suggest features via [**GitHub Issues**](https://github.com/notsoocool/bluloomai/issues) (use the templates when available).
 - Pick an issue labeled `good first issue` or `help wanted`.
 - Improve documentation (`README.md`, `docs/`, this file).
 - Fix typos, accessibility, or UI polish.
@@ -19,11 +19,19 @@ All participants are expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.
 
 1. **Prerequisites:** Node.js 20+ (LTS recommended), [pnpm](https://pnpm.io/), a GitHub account.
 
-2. **Fork and clone** your fork, then add the upstream remote if you plan to sync often:
+2. **Clone** the upstream repo, or **fork** and clone your fork and add `upstream`:
+
+   ```bash
+   git clone https://github.com/notsoocool/bluloomai.git
+   cd bluloomai
+   ```
+
+   If you use a fork:
 
    ```bash
    git clone https://github.com/<your-username>/bluloomai.git
    cd bluloomai
+   git remote add upstream https://github.com/notsoocool/bluloomai.git
    ```
 
 3. **Install dependencies**
@@ -94,10 +102,16 @@ Maintainers may request changes; updating your branch is expected.
 - **UI:** Tailwind + existing glass/landing tokens; avoid duplicating large design systems without discussion.
 - **API routes:** Return consistent JSON errors (`{ error: string }`) and appropriate HTTP status codes; use Clerk `auth()` where routes are user-scoped.
 
+## Continuous integration
+
+[`.github/workflows/ci.yml`](./.github/workflows/ci.yml) runs **ESLint** and **`pnpm build`** on pushes and pull requests targeting `main`.
+
+**Optional (maintainers):** add repository **Actions secrets** `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` so the build step matches your Clerk app. If those secrets are missing, the workflow uses placeholder values so the build can still complete (same idea as in the README for local CI).
+
 ## Security
 
 Do **not** commit secrets, `.env.local`, or keys. Report security issues via [SECURITY.md](./SECURITY.md), not public issues.
 
 ## Questions
 
-Open a **Discussion** or **issue** on this repository if something in this guide is unclear.
+Open a [**Discussion**](https://github.com/notsoocool/bluloomai/discussions) or [**issue**](https://github.com/notsoocool/bluloomai/issues) if something in this guide is unclear.

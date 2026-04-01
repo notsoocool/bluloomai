@@ -10,7 +10,7 @@ We prioritize security fixes for the latest release on the default `main` branch
 
 Instead, report privately so we can fix the issue before it is widely disclosed:
 
-1. Use **GitHub Security Advisories** for this repository: **Security → Report a vulnerability** (if enabled), or
+1. Use [**GitHub Security Advisories**](https://github.com/notsoocool/bluloomai/security/advisories/new) for this repository (**Security → Report a vulnerability**), or
 2. Email the maintainers at a dedicated security address if one is published in the repo or org profile, or
 3. Open a **private** discussion with maintainers only if no other channel exists.
 

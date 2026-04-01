@@ -1,5 +1,7 @@
 # BluLoomAI documentation
 
+**Source:** [github.com/notsoocool/bluloomai](https://github.com/notsoocool/bluloomai)
+
 | Document | Description |
 |----------|-------------|
 | [ENV_VARIABLES.md](./ENV_VARIABLES.md) | Environment variables and where they are used |

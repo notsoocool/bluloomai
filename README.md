@@ -1,5 +1,9 @@
 # BluLoomAI
 
+[![CI](https://github.com/notsoocool/bluloomai/actions/workflows/ci.yml/badge.svg)](https://github.com/notsoocool/bluloomai/actions/workflows/ci.yml)
+
+**Repository:** [github.com/notsoocool/bluloomai](https://github.com/notsoocool/bluloomai)
+
 Growth Intelligence Platform for micro-influencers (1k–100k followers). AI-driven analytics and content intelligence to increase reach, engagement, and follower growth.
 
 ## Tech Stack
@@ -112,8 +116,12 @@ We welcome issues and pull requests. Please read:
 
 Report security issues privately per [SECURITY.md](./SECURITY.md), not via public issues.
 
-**Maintainers:** add a security contact or enable GitHub Security Advisories in `SECURITY.md` when the repo is public.
+**Maintainers:** enable [Private vulnerability reporting](https://github.com/notsoocool/bluloomai/security) (recommended) and keep [SECURITY.md](./SECURITY.md) up to date.
 
 ## License
 
 This project is licensed under the [MIT License](./LICENSE). Replace the copyright line in `LICENSE` with your legal name or organization if you are the primary rights holder.
+
+## CI
+
+GitHub Actions runs lint and production build on pushes and PRs to `main` (see `.github/workflows/ci.yml`). Optional: add Clerk keys as repository secrets so CI matches your production Clerk project.

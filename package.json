@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notsoocool/bluloomai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/notsoocool/bluloomai/issues"
+  },
+  "homepage": "https://github.com/notsoocool/bluloomai#readme",
   "scripts": {
     "dev": "next dev",
     "dev:webpack": "next dev --webpack",
