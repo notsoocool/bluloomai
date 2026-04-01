@@ -113,3 +113,7 @@ We welcome issues and pull requests. Please read:
 Report security issues privately per [SECURITY.md](./SECURITY.md), not via public issues.
 
 **Maintainers:** add a security contact or enable GitHub Security Advisories in `SECURITY.md` when the repo is public.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE). Replace the copyright line in `LICENSE` with your legal name or organization if you are the primary rights holder.
