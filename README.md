@@ -96,3 +96,20 @@ pnpm build
 - `/analytics` – Engagement metrics, posting times
 - `/insights` – Viral pattern analysis (top vs bottom posts)
 - `/generate` – Reel scripts, captions, hook optimizer
+
+## Documentation
+
+- [docs/README.md](./docs/README.md) – index of technical docs
+- [docs/API_ROUTES.md](./docs/API_ROUTES.md) – API reference
+- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) – architecture overview
+
+## Contributing
+
+We welcome issues and pull requests. Please read:
+
+- [CONTRIBUTING.md](./CONTRIBUTING.md) – setup, branches, PR checklist
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) – community standards
+
+Report security issues privately per [SECURITY.md](./SECURITY.md), not via public issues.
+
+**Maintainers:** add a security contact or enable GitHub Security Advisories in `SECURITY.md` when the repo is public.

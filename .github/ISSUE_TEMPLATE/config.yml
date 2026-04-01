@@ -1,0 +1,2 @@
+# Optional: add contact_links with full https://github.com/<owner>/<repo>/... URLs after the repo is public.
+blank_issues_enabled: true
