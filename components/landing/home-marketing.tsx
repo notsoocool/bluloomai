@@ -1,23 +1,16 @@
 import Link from "next/link";
 import { UserPlus } from "lucide-react";
 import { HeroGraph } from "@/components/landing/hero-graph";
+import {
+  AmbientGlow,
+  FloatingCanvas,
+  landingPanel as panel,
+  landingShellColumn as shell,
+  landingSurface as surface,
+} from "@/components/landing/landing-theme";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-/** Section cards — edge color comes from `.landing-panel` in landing-glass.css */
-const panel =
-  "landing-panel relative isolate overflow-hidden bg-black/18 text-white shadow-[0_22px_70px_rgba(0,0,0,0.45)] backdrop-blur-2xl";
-/**
- * `border` + `landing-edge`: width from Tailwind, color forced in landing-glass.css
- * so it never inherits `currentColor` from `text-white` on <main>.
- */
-const surface =
-  "landing-edge overflow-hidden rounded-3xl border border-solid bg-black/22 shadow-none backdrop-blur-2xl";
-
-/** App shell — full width inside `main` padding (no `max-w-*` cap). */
-const shell =
-  "landing-shell relative isolate flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden bg-gradient-to-b from-zinc-900/98 to-black shadow-[0_22px_80px_rgba(0,0,0,0.75)]";
 
 export function HomeMarketing() {
   return (
@@ -28,12 +21,7 @@ export function HomeMarketing() {
       <AmbientGlow />
       <div className="relative z-0 mx-auto flex min-h-0 w-full flex-1 flex-col">
         <div className={shell}>
-          <div aria-hidden className="floating-canvas">
-            <div className="canvas-light canvas-light-a" />
-            <div className="canvas-light canvas-light-b" />
-            <div className="canvas-light canvas-light-c" />
-            <div className="canvas-grid" />
-          </div>
+          <FloatingCanvas />
           <ShellHeader />
           <div
             id="landing-scroll"
@@ -53,16 +41,6 @@ export function HomeMarketing() {
         </div>
       </div>
     </main>
-  );
-}
-
-function AmbientGlow() {
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-      <div className="absolute -left-36 top-8 h-[420px] w-[420px] rounded-full bg-emerald-400/10 blur-[120px]" />
-      <div className="absolute right-[-140px] top-1/3 h-[420px] w-[420px] rounded-full bg-cyan-400/10 blur-[120px]" />
-      <div className="absolute bottom-[-140px] left-1/3 h-[300px] w-[300px] rounded-full bg-white/5 blur-[100px]" />
-    </div>
   );
 }
 

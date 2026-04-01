@@ -3,12 +3,10 @@ import { auth } from "@clerk/nextjs/server";
 import * as instagramAccountRepo from "@/repositories/instagram-account.repository";
 import * as analyticsService from "@/services/analytics/analytics.service";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  landingPanel,
+  landingSurface,
+} from "@/components/landing/landing-theme";
+import { cn } from "@/lib/utils";
 
 export default async function AnalyticsPage() {
   const { userId } = await auth();
@@ -17,11 +15,18 @@ export default async function AnalyticsPage() {
   const account = await instagramAccountRepo.getByClerkUserId(userId);
   if (!account) {
     return (
-      <div className="p-6 md:p-8">
-        <h1 className="text-2xl font-semibold">Analytics</h1>
-        <p className="mt-4 text-muted-foreground">
-          Connect your Instagram account to view analytics.
-        </p>
+      <div>
+        <div className="mb-8">
+          <p className="text-[11px] tracking-[0.28em] text-zinc-500">
+            BLULOOMAI · ANALYTICS
+          </p>
+          <h1 className="mt-5 text-3xl font-semibold leading-tight md:text-4xl">
+            Analytics
+          </h1>
+          <p className="mt-2 text-sm text-zinc-500">
+            Connect your Instagram account to view analytics.
+          </p>
+        </div>
       </div>
     );
   }
@@ -29,68 +34,55 @@ export default async function AnalyticsPage() {
   const analytics = await analyticsService.getAnalyticsSummary(account.id);
 
   return (
-    <div className="p-6 md:p-8">
+    <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-foreground">Analytics</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="text-[11px] tracking-[0.28em] text-zinc-500">
+          BLULOOMAI · ANALYTICS
+        </p>
+        <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-4xl">
+          Analytics
+        </h1>
+        <p className="mt-2 max-w-lg text-sm text-zinc-500">
           Engagement metrics and performance trends
         </p>
       </div>
 
       <div className="space-y-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Average engagement rate</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-semibold">
-                {analytics?.metrics.avgEngagementRate.toFixed(2) ?? "—"}%
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Total posts</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-semibold">
-                {analytics?.metrics.totalPosts ?? "—"}
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Total likes</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-semibold">
-                {analytics?.metrics.totalLikes?.toLocaleString() ?? "—"}
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Total comments</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-semibold">
-                {analytics?.metrics.totalComments?.toLocaleString() ?? "—"}
-              </p>
-            </CardContent>
-          </Card>
+          <MetricTile
+            label="Average engagement rate"
+            value={
+              analytics?.metrics?.avgEngagementRate != null
+                ? `${analytics.metrics.avgEngagementRate.toFixed(2)}%`
+                : "—"
+            }
+          />
+          <MetricTile
+            label="Total posts"
+            value={analytics?.metrics?.totalPosts ?? "—"}
+          />
+          <MetricTile
+            label="Total likes"
+            value={analytics?.metrics?.totalLikes?.toLocaleString() ?? "—"}
+          />
+          <MetricTile
+            label="Total comments"
+            value={analytics?.metrics?.totalComments?.toLocaleString() ?? "—"}
+          />
         </div>
 
-        {analytics?.byDayOfWeek && analytics.byDayOfWeek.some((d) => d.postCount > 0) && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Engagement by day</CardTitle>
-              <CardDescription>
+        {analytics?.byDayOfWeek &&
+          analytics.byDayOfWeek.some((d) => d.postCount > 0) && (
+            <article
+              className={cn(landingPanel, "rounded-2xl p-8 sm:rounded-3xl")}
+            >
+              <h2 className="text-xl font-semibold md:text-2xl">
+                Engagement by day
+              </h2>
+              <p className="mt-1 text-sm text-zinc-500">
                 Average engagement rate by day of week
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-4">
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4">
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
                   (day, i) => {
                     const data = analytics.byDayOfWeek.find(
@@ -99,15 +91,16 @@ export default async function AnalyticsPage() {
                     return (
                       <div
                         key={day}
-                        className="flex flex-col items-center rounded-lg border border-border p-4 min-w-[80px]"
+                        className={cn(
+                          landingSurface,
+                          "flex min-w-[88px] flex-col items-center rounded-2xl p-4"
+                        )}
                       >
-                        <span className="text-xs text-muted-foreground">
-                          {day}
-                        </span>
-                        <span className="mt-1 font-medium">
+                        <span className="text-xs text-zinc-500">{day}</span>
+                        <span className="mt-1 font-semibold text-zinc-100">
                           {data?.avgEngagementRate?.toFixed(2) ?? "0"}%
                         </span>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-xs text-zinc-500">
                           {data?.postCount ?? 0} posts
                         </span>
                       </div>
@@ -115,36 +108,54 @@ export default async function AnalyticsPage() {
                   }
                 )}
               </div>
-            </CardContent>
-          </Card>
-        )}
+            </article>
+          )}
 
-        {analytics?.bestPostingSlots && analytics.bestPostingSlots.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Best posting slots</CardTitle>
-              <CardDescription>
+        {analytics?.bestPostingSlots &&
+          analytics.bestPostingSlots.length > 0 && (
+            <article
+              className={cn(landingPanel, "rounded-2xl p-8 sm:rounded-3xl")}
+            >
+              <h2 className="text-xl font-semibold md:text-2xl">
+                Best posting slots
+              </h2>
+              <p className="mt-1 text-sm text-zinc-500">
                 Top 3 recommended times based on your data
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
+              </p>
+              <ul className="mt-6 space-y-2">
                 {analytics.bestPostingSlots.map((slot) => (
                   <li
                     key={slot.label}
-                    className="flex items-center justify-between rounded-lg border border-border px-4 py-2"
+                    className={cn(
+                      landingSurface,
+                      "flex items-center justify-between rounded-2xl px-4 py-3"
+                    )}
                   >
-                    <span>{slot.label}</span>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-zinc-200">{slot.label}</span>
+                    <span className="text-sm text-zinc-500">
                       {slot.score.toFixed(2)}% avg
                     </span>
                   </li>
                 ))}
               </ul>
-            </CardContent>
-          </Card>
-        )}
+            </article>
+          )}
       </div>
+    </div>
+  );
+}
+
+function MetricTile({
+  label,
+  value,
+}: {
+  label: string;
+  value: string | number;
+}) {
+  return (
+    <div className={cn(landingSurface, "flex flex-col gap-1 rounded-2xl p-4")}>
+      <p className="text-xs text-zinc-500">{label}</p>
+      <p className="text-2xl font-semibold text-zinc-100">{value}</p>
     </div>
   );
 }

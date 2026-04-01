@@ -17,12 +17,15 @@ const DASHBOARD_ROUTE_PREFIXES = [
   "/generate",
 ];
 
+/** Clerk-hosted auth pages already include sign-in / sign-up UI. */
+const AUTH_ROUTE_PREFIXES = ["/sign-in", "/sign-up"];
+
 export function ClerkHeader() {
   const pathname = usePathname();
   if (pathname === "/" || pathname === "") return null;
-  const hideHeader = DASHBOARD_ROUTE_PREFIXES.some((prefix) =>
-    pathname?.startsWith(prefix)
-  );
+  const hideHeader =
+    DASHBOARD_ROUTE_PREFIXES.some((prefix) => pathname?.startsWith(prefix)) ||
+    AUTH_ROUTE_PREFIXES.some((prefix) => pathname?.startsWith(prefix));
   if (hideHeader) return null;
 
   return (

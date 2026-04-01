@@ -17,9 +17,12 @@ export function Sidebar() {
   const basePath = pathname?.split("/")[1] ?? "";
 
   return (
-    <aside className="flex w-56 flex-col border-r border-border bg-card">
-      <div className="flex h-16 items-center gap-2 border-b border-border px-6">
-        <Link href="/dashboard" className="font-semibold text-foreground">
+    <aside className="relative z-20 flex w-56 shrink-0 flex-col border-r border-solid border-[rgb(36_36_40)] bg-black/25 backdrop-blur-xl">
+      <div className="landing-header flex h-16 shrink-0 items-center px-5">
+        <Link
+          href="/dashboard"
+          className="text-sm font-semibold tracking-tight text-white hover:text-zinc-200"
+        >
           BluLoomAI
         </Link>
       </div>
@@ -32,10 +35,10 @@ export function Sidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  ? "bg-white text-black"
+                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
               )}
             >
               {item.label}
@@ -43,10 +46,17 @@ export function Sidebar() {
           );
         })}
       </nav>
-      <div className="border-t border-border p-4">
+      <div className="landing-header p-4">
         <div className="flex items-center gap-2">
-          <UserButton afterSignOutUrl="/" />
-          <span className="text-sm text-muted-foreground">Account</span>
+          <UserButton
+            afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                avatarBox: "h-9 w-9 ring-1 ring-white/10",
+              },
+            }}
+          />
+          <span className="text-xs text-zinc-500">Account</span>
         </div>
       </div>
     </aside>

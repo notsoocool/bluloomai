@@ -14,10 +14,15 @@ export default async function DashboardPage() {
     : null;
 
   return (
-    <div className="p-6 md:p-8">
+    <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-foreground">Dashboard</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="text-[11px] tracking-[0.28em] text-zinc-500">
+          BLULOOMAI · WORKSPACE
+        </p>
+        <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight md:text-4xl">
+          Dashboard
+        </h1>
+        <p className="mt-2 max-w-lg text-sm text-zinc-500">
           Your growth overview and quick actions
         </p>
       </div>
