@@ -8,12 +8,23 @@ All participants are expected to follow our [Code of Conduct](./CODE_OF_CONDUCT.
 
 ## Ways to contribute
 
-- Report bugs or suggest features via [**GitHub Issues**](https://github.com/notsoocool/bluloomai/issues) (use the templates when available).
+- **Questions & setup help** — use [**GitHub Discussions**](https://github.com/notsoocool/bluloomai/discussions), preferably the **Q&A** category (see the pinned “how to ask for help” thread if available). That keeps issue noise down and helps others find answers later.
+- **Ideas** (features, docs, UX) — start in [**Discussions → Ideas**](https://github.com/notsoocool/bluloomai/discussions); we may convert agreed work into an issue with a clear scope.
+- **Bugs & concrete tasks** — open [**GitHub Issues**](https://github.com/notsoocool/bluloomai/issues) (use the templates when available).
 - Pick an issue labeled `good first issue` or `help wanted`.
 - Improve documentation (`README.md`, `docs/`, this file).
 - Fix typos, accessibility, or UI polish.
 
-**Before large refactors or new features:** open an issue (or comment on an existing one) so maintainers can align on scope.
+**Before large refactors or new features:** open an issue or a Discussion so maintainers can align on scope.
+
+**Quick routing**
+
+| You need… | Where to go |
+|-----------|-------------|
+| Setup / “how do I…?” | [Discussions](https://github.com/notsoocool/bluloomai/discussions) (Q&A) |
+| Suggest a feature or doc change | [Discussions](https://github.com/notsoocool/bluloomai/discussions) (Ideas) |
+| Report a bug or track work | [Issues](https://github.com/notsoocool/bluloomai/issues) |
+| Security concern | [SECURITY.md](./SECURITY.md) (private report) |
 
 ## Development setup
 
@@ -114,4 +125,4 @@ Do **not** commit secrets, `.env.local`, or keys. Report security issues via [SE
 
 ## Questions
 
-Open a [**Discussion**](https://github.com/notsoocool/bluloomai/discussions) or [**issue**](https://github.com/notsoocool/bluloomai/issues) if something in this guide is unclear.
+If something in this guide is unclear, open a [**Discussion**](https://github.com/notsoocool/bluloomai/discussions) (Q&A) or an [**issue**](https://github.com/notsoocool/bluloomai/issues). For broader help and brainstorming, prefer **Discussions**; use **Issues** when you have a reproducible bug or a specific change request.

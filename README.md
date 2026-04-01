@@ -107,6 +107,15 @@ pnpm build
 - [docs/API_ROUTES.md](./docs/API_ROUTES.md) – API reference
 - [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) – architecture overview
 
+## Community
+
+Use **[GitHub Discussions](https://github.com/notsoocool/bluloomai/discussions)** to chat with maintainers and other contributors:
+
+- **Help & setup** — ask in **Q&A** (or **General**) before opening an issue if you’re unsure something is a bug.
+- **Ideas** — feature suggestions and documentation improvements belong in **Ideas**; maintainers may turn accepted ideas into issues.
+
+For **confirmed bugs** and **scoped work**, use [**Issues**](https://github.com/notsoocool/bluloomai/issues) with the templates. **Security** reports must follow [SECURITY.md](./SECURITY.md), not Discussions.
+
 ## Contributing
 
 We welcome issues and pull requests. Please read:
